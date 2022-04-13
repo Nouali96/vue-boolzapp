@@ -1,0 +1,283 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(0deg, #dadbd4 85%, #1c9588 15%);
+    display: flex;
+    font-family: sans-serif;
+}
+
+.container {
+    min-width: 500px;
+    width: 80%;
+    height: 90vh;
+    margin: 5vh auto;
+    display: flex;
+}
+
+.container::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.left, .right {
+    float: left;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+.left {
+    background-color: pink;
+    width: 40%;
+    
+}
+
+.right {
+    width: 60%;
+}
+
+/* left */
+
+.header-left, .header-right {
+    height: 60px;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    flex-shrink: 0;
+}
+
+.notification-left {
+    height: 60px;
+    background-color: #8edadc;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.left-notification{
+    background-color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #8edadc;
+    margin: 0 20px;
+}
+
+.contacts-left {
+    background-color: white;
+    flex-grow: 1;
+    overflow-y: scroll;;
+}
+
+/* header left */
+
+.header-avatar {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-name {
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.header-button {
+    margin-left: auto;
+}
+
+.header-button i {
+    font-size: 20px;
+    padding: 10px;
+    color: lightgrey;
+}
+
+/* search left */
+
+.search-left {
+    height: 60px;
+    background-color: #fafafa;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 8px 10px 40px;
+    color: #b1b1b1;
+    font-size: 12px;
+    border: solid 1px black;
+    border-radius: 2px;
+}
+
+/* todo */
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-wrapper::before {
+    content: '\f002';
+    font-family: "Font Awesome 5 Free";
+    color: #b1b1b1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: 600;
+}
+
+.search-input-wrapper .search-input {
+    width: 100%;
+    padding-left: 40px;
+}
+
+.contact-logo img{
+    height: 60px;
+    border-radius: 50%;
+    padding: 0px 10px;
+}
+
+.contact {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.contact.active, .contact:hover{
+    background-color: #eaeaea;
+}
+
+.contact-info div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-info {
+   width: calc(100% - 100px); 
+}
+
+/* right */
+
+.header-contact {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.header-contact .contact-lastAccess {
+    font-size: 12px;
+    color: #b1b1b1;
+}
+
+.bottom-right {
+    width: 100%;
+    background-color: #eaeaea;
+}
+
+.left-footer-icon, .right-footer-icon {
+    width: 10%;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px 10px;
+    color: #b1b1b1;
+}
+
+.message-input {
+    float: left;
+    width: 80%;
+    margin: 10px 0px;
+    padding: 5px;
+}
+
+.bottom-right::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.message-right {
+    flex-grow: 1;
+    background-image: url("./img/mine.jpg");
+    overflow-y: scroll;
+}
+
+.message {
+    max-width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 150px;
+    margin-top: 20px;
+    margin: 20px 20px;
+}
+
+.message.received {
+    background-color: #fff;
+    
+}
+
+.message.sent {
+    background-color: #d5f9da;
+    margin-left: auto;
+}
+
+.message .sentDate{
+    font-size: 12px;
+    color: #b1b1b1;
+    text-align: right;
+    margin-top: 5px;
+    display: block;
+}
+
+.message-options{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.message-options-panel{
+    background-color: white;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    padding: 10px;
+}
+
+.message-info{
+    margin-bottom: 5px;
+}
+
+.message-info, .message-destroy{
+    cursor: pointer;
+}
+
+.fa-chevron-down{
+    cursor: pointer;
+}
+
+/* contacts-left */
+
+.contact-date, .contact-text{
+    color: #b1b1b1;
+    font-size: 15px;
+}
+
+.contact-date{
+    width: 100%;
+    text-align: right;
+}
+.diplayflex{
+    display: flex;
+}

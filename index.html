@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzap</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <div id="root" class="container">
+        <div class="left">
+            <div class="header-left">
+                <img class="header-avatar" src="img/avatar_io.jpg" alt="avatar_io">
+                <span class="header-name">Nome Utente</span>
+                <div class="header-button">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+            <div class="notification-left">
+                <div class="left-notification">
+                    <i class="fa fa-bell-slash"></i>
+                </div>
+
+                <div class="right-notification">
+                    <h3>Ricevi notifiche dei nuovi messaggi</h3>
+                    <a href="#">Attiva notifiche desktop</a>
+                </div>
+            </div>
+            <div class="search-left">
+                <div class="search-input-wrapper">
+                <input placeholder="Cerca e inizia una nuova chat" type="text" class="search-input" v-model="searchContactName" @keyup="searchContact">
+                </div>              
+            </div>
+            
+            <div class="contacts-left">
+                <div class="contact" :class="(index == active)?'active':'`'" v-for="(contact, index) in contacts" v-show="contact.visible == true" @click="setContactActive(index)">
+                    <div class="contact-logo">
+                        <img :src='"img/avatar" + contact.avatar + ".jpg"'>
+                    </div>
+                    <div class="contact-info">
+                        <h3 class="diplayflex"><span>{{contact.name}}</span><span class="contact-date">{{getLastDate(index)}}</span> </h3>
+                        <div class="contact-text">{{getLastText(index)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="header-right">
+                <img class="header-avatar" :src='"img/avatar" + contacts[active].avatar + ".jpg"' alt="avatar_io">
+                <div class="header-contact">
+                    <span class="contact-name">{{contacts[active].name}}</span>
+                    <span class="contact-lastAccess">Ultimo accesso... {{getLastDate(active)}}</span>
+                </div>
+                <div class="header-button">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+            <div class="message-right">
+                <div v-for="(message, indexMessage) in contacts[active].messages" class="message" :class="message.status">
+                    <div class="message-options">
+                        <span>{{message.text}}</span>
+                        <i class="fa fa-chevron-down f-right" @click="showOption(active, indexMessage)"></i>
+                        <div class="message-options-panel" v-if="checkOptionIsValid(indexMessage)">
+                            <div class="message-info">Info messaggio</div>
+                            <div class="message-destroy" @click="deleteMessage(active, indexMessage)">Cancella messaggio</div>
+                        </div>
+                    </div>
+                    <div class="sentDate">{{message.date}}</div>
+                    
+                </div>
+                
+            
+            </div>
+            <div class="bottom-right">
+                <div class="left-footer-icon">
+                    <i class="fa fa-smile"></i>
+                </div>
+                <input type="text" class="message-input" placeholder="Scrivi un messaggio..." v-model="newText" @keyup.enter="sendMessage">
+                <div class="right-footer-icon">
+                    <i class="fa fa-microphone"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
+
